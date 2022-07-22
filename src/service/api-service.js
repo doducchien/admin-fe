@@ -37,13 +37,16 @@ const apiService = () => {
         responseType: 'json',
         timeout: 1000 * 60 * 2,
         withCredentials: true,
-        httpAgent: 'PostmanRuntime/7.29.0'
+        httpAgent: 'PostmanRuntime/7.29.0',
         
 
     })
+  
     axiosInstance.defaults.headers.common['Authorization'] = 'chien'
     axiosInstance.defaults.headers.post['Content-Type'] ='application/json ; charset=UTF-8';
-    axiosInstance.defaults.headers.common[      'Access-Control-Allow-Origin'] = '*'
+    // axiosInstance.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:3000'
+    axiosInstance.defaults.headers.common['Access-Control-Allow-Credentials'] = true
+
 
     axiosInstance.interceptors.request.use(function (config) {
         console.log(config)
